@@ -71,7 +71,7 @@ const STATUS_SETTLED = 3;
 const STATUS_REFUNDING = 4;
 const statusLabels = ["Pending", "Trading", "Locked", "Settled", "Refunding"];
 const statusClasses = ["pending", "trading", "locked", "settled", "refunding"];
-const durationOrder: DurationKey[] = ["5m", "1h", "1d"];
+const durationOrder: DurationKey[] = ["1m", "5m", "1h", "1d"];
 const categories: Array<"All" | MarketCategory> = ["All", "Crypto", "Sports", "Macro", "AI", "DeFi"];
 const views = ["Markets", "Portfolio", "History"] as const;
 const maxBetAmount = parseUnits("10000", 6);
@@ -205,7 +205,7 @@ export default function Home() {
   const [deployError, setDeployError] = useState("");
   const [activeView, setActiveView] = useState<DeskView>("Markets");
   const [selectedCategory, setSelectedCategory] = useState<"All" | MarketCategory>("All");
-  const [selectedDuration, setSelectedDuration] = useState<DurationKey>("5m");
+  const [selectedDuration, setSelectedDuration] = useState<DurationKey>("1m");
   const [selectedMarketAddress, setSelectedMarketAddress] = useState<Address | null>(null);
   const [query, setQuery] = useState("");
   const [direction, setDirection] = useState<number>(DIRECTION_UP);

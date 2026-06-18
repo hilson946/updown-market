@@ -146,7 +146,7 @@ async function main() {
   const twapWindow = Number(process.env.TWAP_WINDOW_SECONDS ?? "60");
   const minLiquidity = BigInt(process.env.MIN_POOL_LIQUIDITY ?? "1");
   const tradingStartDelay = BigInt(process.env.TRADING_START_DELAY_SECONDS ?? "900");
-  const durationLabels = (process.env.MARKET_DURATIONS ?? "5m,1h,1d")
+  const durationLabels = (process.env.MARKET_DURATIONS ?? "1m,5m,1h,1d")
     .split(",")
     .map((item) => item.trim())
     .filter(Boolean) as DurationKey[];

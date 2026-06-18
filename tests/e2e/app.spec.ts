@@ -25,6 +25,7 @@ test("renders the trading desk and local controls", async ({ page }) => {
   await expect(page.getByRole("button", { name: "History" })).toBeVisible();
   await expect(page.getByRole("button", { name: "Crypto" })).toBeVisible();
   await expect(page.getByRole("button", { name: "Sports" })).toBeVisible();
+  await expect(page.getByRole("button", { name: "1m" })).toBeVisible();
   await expect(page.getByRole("button", { name: "5m" })).toBeVisible();
   await expect(page.getByRole("button", { name: "1h" })).toBeVisible();
   await expect(page.getByRole("button", { name: "1d" })).toBeVisible();
@@ -52,6 +53,10 @@ test("renders the trading desk and local controls", async ({ page }) => {
 
 test("switches market duration without layout failure", async ({ page }) => {
   await page.goto("/app");
+  await expect(page.getByRole("heading", { name: "1m Markets" })).toBeVisible();
+
+  await page.getByRole("button", { name: "5m" }).click();
+  await expect(page.getByRole("button", { name: "5m" })).toHaveClass(/active/);
   await expect(page.getByRole("heading", { name: "5m Markets" })).toBeVisible();
 
   await page.getByRole("button", { name: "1h" }).click();
@@ -91,6 +96,7 @@ test("deployment API exposes local contracts", async ({ request }) => {
   const body = await response.json();
   expect(body.chainId).toBe(31337);
   expect(body.mockUSDC).toMatch(/^0x[a-fA-F0-9]{40}$/);
-  expect(body.markets.length).toBeGreaterThanOrEqual(21);
+  expect(body.markets.length).toBeGreaterThanOrEqual(28);
+  expect(body.markets.some((market: { label?: string }) => market.label === "1m")).toBeTruthy();
   expect(body.markets.some((market: { category?: string }) => market.category === "Sports")).toBeTruthy();
 });

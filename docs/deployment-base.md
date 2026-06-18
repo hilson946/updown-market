@@ -42,7 +42,7 @@ Set:
 
 Optional timing:
 
-- `TRADING_START_DELAY_SECONDS` controls how soon the betting window opens after deployment. For each duration, `predictionStart = current block time + predictionDuration + TRADING_START_DELAY_SECONDS`, so a 5m market opens for betting after the delay and predicts the following 5-minute window.
+- `TRADING_START_DELAY_SECONDS` controls how soon the betting window opens after deployment. For each duration, `predictionStart = current block time + predictionDuration + TRADING_START_DELAY_SECONDS`, so a 1m market opens for betting after the delay and predicts the following 1-minute window. `MARKET_DURATIONS` supports `1m,5m,1h,1d`.
 
 For production, the deployer key should be controlled by a hardware wallet or a short-lived deployment wallet funded only for the deployment. Do not reuse the relayer key.
 

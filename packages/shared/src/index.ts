@@ -7,6 +7,7 @@ export const DEFAULT_FEE_BPS = 50;
 export const MAX_FEE_BPS = 150;
 
 export const predictionDurations = {
+  "1m": 60n,
   "5m": 300n,
   "1h": 3600n,
   "1d": 86400n,

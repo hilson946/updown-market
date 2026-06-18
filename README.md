@@ -84,11 +84,11 @@ The local deployment script deploys:
 - `FrontendRegistry`
 - `MockTwapOracle`
 - `PredictionMarketFactory`
-- 21 default demo markets across crypto, DeFi, sports, macro, and AI categories
+- 28 default demo markets across crypto, DeFi, sports, macro, and AI categories
 
 Each demo market still uses the same immutable UP/DOWN contract shape. Local non-crypto categories are mock-oracle examples for product testing, not production sports or macro oracle integrations.
 
-Market timing is anchored to the prediction window. A 5m market predicting 10:00:00 to 10:05:00 accepts bets from 9:55:00 through 10:00:04; at 10:00:05 it is locked. A 1h market uses the same rule: bets are accepted from one hour before the prediction start through prediction start plus 5 seconds.
+Market timing is anchored to the prediction window. A 1m market predicting 10:00:00 to 10:01:00 accepts bets from 9:59:00 through 10:00:04; at 10:00:05 it is locked. A 5m market predicting 10:00:00 to 10:05:00 accepts bets from 9:55:00 through 10:00:04. A 1h market uses the same rule: bets are accepted from one hour before the prediction start through prediction start plus 5 seconds.
 
 It writes addresses to `packages/shared/src/deployments/localhost.json`.
 
