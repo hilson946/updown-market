@@ -1,0 +1,17 @@
+node_modules
+.next
+out
+dist
+cache
+broadcast
+artifacts
+*.log
+.env
+.env.local
+.env.deploy
+.env.*.generated
+test-results
+playwright-report
+packages/shared/src/deployments/localhost.json
+packages/shared/src/deployments/*.generated.json
+packages/shared/src/deployments/*.relayer.env.example

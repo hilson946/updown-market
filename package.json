@@ -1,0 +1,34 @@
+{
+  "name": "updown-market",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@11.4.0",
+  "scripts": {
+    "build": "pnpm --filter @updown/contracts build && pnpm --filter @updown/shared build && pnpm --filter @updown/relayer build && pnpm --filter @updown/web build",
+    "test": "pnpm test:contracts",
+    "test:contracts": "pnpm --filter @updown/contracts test",
+    "test:web:e2e": "playwright test",
+    "integration:relayer": "pnpm deploy:local && tsx scripts/integration-relayer-local.ts",
+    "dev:web": "pnpm --filter @updown/web dev",
+    "dev:relayer": "pnpm --filter @updown/relayer dev",
+    "dev:anvil": "anvil --host 127.0.0.1 --port 8545 --chain-id 31337",
+    "deploy:local": "pnpm --filter @updown/contracts build && tsx scripts/deploy-local.ts",
+    "deploy:base-sepolia": "pnpm --filter @updown/contracts build && NETWORK=base-sepolia tsx scripts/deploy-base.ts",
+    "deploy:base-mainnet": "pnpm --filter @updown/contracts build && NETWORK=base-mainnet tsx scripts/deploy-base.ts",
+    "integration:local": "pnpm deploy:local && tsx scripts/integration-local.ts",
+    "coverage": "pnpm --filter @updown/contracts exec forge coverage --ir-minimum",
+    "audit:slither": "slither packages/contracts --config-file slither.config.json --exclude arbitrary-send-erc20,weak-prng --fail-high",
+    "audit:slither:raw": "slither packages/contracts --config-file slither.config.json",
+    "audit:security": "bash scripts/security-audit.sh"
+  },
+  "dependencies": {
+    "@updown/shared": "workspace:*",
+    "dotenv": "^17.2.3",
+    "viem": "^2.39.3"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.61.0",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
+  }
+}
